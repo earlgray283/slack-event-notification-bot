@@ -62,7 +62,7 @@ func main() {
 				Color: "#99b7dc",
 			})
 		}
-		postMessageMulti(slackClient, entry.Channels, slack.MsgOptionText("1時間以内の予定一覧だよ", false), slack.MsgOptionAttachments(attachments...))
+		postMessageMulti(slackClient, entry.Channels, slack.MsgOptionText("<!channel>\n1時間以内の予定一覧だよ", false), slack.MsgOptionAttachments(attachments...))
 	}
 }
 
