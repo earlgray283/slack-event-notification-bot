@@ -46,7 +46,7 @@ func main() {
 			if !now.Before(startAt) {
 				continue
 			}
-			if startAt.Sub(now) < time.Hour {
+			if startAt.Sub(now) <= time.Hour+10*time.Second {
 				notifyEvents = append(notifyEvents, event)
 			} else {
 				break
