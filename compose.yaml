@@ -1,0 +1,7 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: asia-northeast1-docker.pkg.dev/${GCP_PROJECT_ID}/${GCP_REPOSITORY}/slack-event-notification-bot
+    platform: linux/amd64
