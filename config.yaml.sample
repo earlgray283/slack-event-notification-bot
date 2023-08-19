@@ -1,0 +1,5 @@
+calendars:
+  my_calendar:
+    id: <calendar id>
+    channels:
+      - 
