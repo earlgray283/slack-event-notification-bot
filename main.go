@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 	"time"
 
 	"github.com/earlgray283/slack-event-notification-bot/config"
@@ -62,7 +63,11 @@ func main() {
 				Color: "#99b7dc",
 			})
 		}
-		postMessageMulti(slackClient, entry.Channels, slack.MsgOptionText("<!channel>\n1時間以内の予定一覧だよ", false), slack.MsgOptionAttachments(attachments...))
+		if len(attachments) > 0 {
+			if err := postMessageMulti(slackClient, entry.Channels, slack.MsgOptionText("<!channel>\n1時間以内の予定一覧だよ", false), slack.MsgOptionAttachments(attachments...)); err != nil {
+				log.Fatal(err)
+			}
+		}
 	}
 }
 
