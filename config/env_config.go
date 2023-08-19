@@ -4,7 +4,7 @@ import "github.com/kelseyhightower/envconfig"
 
 type EnvConfig struct {
 	SlackBotUserOAuthToken       string `envconfig:"SLACK_BOT_USER_OAUTH_TOKEN" required:"true"`
-	GoogleApplicationCredentials string `envconfig:"GOOGLE_APPLICATION_CREDENTIALS" required:"true"`
+	GoogleApplicationCredentials string `envconfig:"GOOGLE_APPLICATION_CREDENTIALS"`
 	YamlConfigPath               string `envconfig:"YAML_CONFIG_PATH" default:"config.yaml"`
 }
 
