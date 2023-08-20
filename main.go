@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"regexp"
 	"time"
 
 	"github.com/earlgray283/slack-event-notification-bot/config"
@@ -45,6 +46,15 @@ func main() {
 		for _, event := range eventList.Items {
 			startAt, _ := time.Parse(time.RFC3339, event.Start.DateTime)
 			if !now.Before(startAt) {
+				continue
+			}
+			matched, err := regexp.MatchString(entry.Event.Summary, event.Summary)
+			if err != nil {
+				log.Println(err)
+				break
+			}
+			log.Println(entry.Event.Summary, event.Summary, matched)
+			if !matched {
 				continue
 			}
 			if startAt.Sub(now) <= time.Hour+10*time.Second {
